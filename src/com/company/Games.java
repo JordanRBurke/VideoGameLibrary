@@ -8,6 +8,16 @@ public class Games  {
     String gameSaved2;
     String gameSaved3;
     String gameSaved4;
+    String checkedOut;
+
+    public String getCheckedOut() {
+        return checkedOut;
+    }
+
+    public void setCheckedOut(String checkedOut) {
+
+        this.checkedOut = checkedOut;
+    }
 
     public void setGameSaved(String gameSaved) {
         this.gameSaved = gameSaved;
