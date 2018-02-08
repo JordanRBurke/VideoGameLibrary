@@ -13,7 +13,7 @@ public class SelectionOptions extends Games {
         System.out.println(" 1. Add game \n" +
                 " 2. Remove game \n" +
                 " 3. Check out game \n" +
-                " 4. view library \n " +
+                " 4. View library \n " +
                 "5. Check in game \n" +
                 " 6. View checked out games \n" +
                 " 7. Exit");
@@ -33,9 +33,16 @@ public class SelectionOptions extends Games {
                     if (input.nextInt() == 1) {
                         interaction();
                     } else {
-                        System.out.println("Congrats you have saved your second game!");
+                        System.out.println("Please input your second game!");
+                        input.nextLine();
+                        setGameSaved2(input.nextLine());
                     }
-                    setGameSaved2(input.nextLine());
+
+                    System.out.println("Press 3 to exit");
+                    if (input.nextInt() == 3) {
+                        interaction();
+                    }
+
                     break;
                 case 2:
                     System.out.println("Which game would you like to remove? \n 1. " + getGameSaved());
@@ -48,8 +55,8 @@ public class SelectionOptions extends Games {
 
 
                         System.out.println("Which game would you like to check out? \n 1. Fallout Series \n 2. Terraria \n 3. Minecraft \n 4. Skyrim");
-                        input.nextLine();
-                        if (input.nextLine().equals("Fallout series")) {
+
+                        if (input.nextInt() == 1) {
                             System.out.println("These are the list of Fallout games avaliable \n 1. Fallout \n 2. Fallout 2 \n 3. Fallout 3 \n 4. Fallout New Vegas \n 5. Fallout 4");
                             switch (input.nextInt()) {
                                 case 1:
@@ -71,8 +78,25 @@ public class SelectionOptions extends Games {
 
                             }
 
+                        } else if (input.nextInt() == 2) {
+                            setCheckedOut("Terraria");
+                            System.out.println("You have checked out Terraria");
+                            input.nextInt();
+                        } else if (input.nextInt() == 3) {
+                            setCheckedOut("Minecraft");
+                            System.out.println("You have checked out Minecraft");
+                            input.nextInt();
+                        } else if (input.nextInt() == 4) {
+                            setCheckedOut("Skyrim");
+                            System.out.println("You have checked out Skyrim");
+
+                        }
+                        System.out.println("Press 8 to leave");
+                        if (input.nextInt() == 8) {
+                            interaction();
                         }
                         break;
+
                 case 4:
                     // List of games you saved in case 1
                     System.out.println("These are your currently added games \n" +
@@ -85,10 +109,31 @@ public class SelectionOptions extends Games {
                     break;
 
                 case 5:
-                    System.out.println("These are your list of checked out games \n 1. " + getCheckedOut());
+                    System.out.println("Which one of the games would you like to check in? \n 1. " + getCheckedOut());
+                    if (input.nextInt() == 1) {
+                        setCheckedOut(null);
+                        System.out.println("You have checked in your game");
+
+                    }
+                    System.out.println("Press 3 to return to menu");
+                    if (input.nextInt() == 3) {
+                        interaction();
+                    }
                     break;
 
+
                 case 6:
+                    System.out.println("These are your list of checked out games \n 1. " + getCheckedOut());
+                    System.out.println("Press 3 to exit");
+                    if (input.nextInt() == 3) {
+                        interaction();
+
+                    }
+                    break;
+
+                case 7:
+                    System.exit(0);
+
 
                     }
 
