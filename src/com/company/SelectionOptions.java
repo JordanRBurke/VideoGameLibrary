@@ -1,13 +1,21 @@
 package com.company;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SelectionOptions extends Games {
 
+    CheckOutDates checkDates = new CheckOutDates();
+
 
     public void interaction () {
         Scanner input = new Scanner(System.in);
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat checkOutDate = new SimpleDateFormat("MM/dd/yyyy");
+//        System.out.println(checkOutDate.format(calendar.getTime()));
 
         System.out.println("Please select one of the options below");
         System.out.println(" 1. Add game \n" +
@@ -54,41 +62,53 @@ public class SelectionOptions extends Games {
                 case 3:
 
 
-                        System.out.println("Which game would you like to check out? \n 1. Fallout Series \n 2. Terraria \n 3. Minecraft \n 4. Skyrim");
+                        System.out.println("Which game would you like to check out? \n 1. Fallout Series \n 2. Terraria \n 3. World of Warcraft \n 4. Skyrim");
 
                         if (input.nextInt() == 1) {
                             System.out.println("These are the list of Fallout games avaliable \n 1. Fallout \n 2. Fallout 2 \n 3. Fallout 3 \n 4. Fallout New Vegas \n 5. Fallout 4");
                             switch (input.nextInt()) {
                                 case 1:
+
+                                    calendar.add(Calendar.DAY_OF_YEAR, 10);
                                     setCheckedOut("Fallout");
-                                    System.out.println("Fallout has been added to checked out games!");
+//                                    checkedOut.checkOutDatesMethod();
+
+                                    System.out.println("Fallout has been added to checked out games! \n this game will be due: " + checkOutDate.format(calendar.getTime()));
+
+//                                    System.out.println(checkOutDate.format(calendar.getTime()));
                                     break;
                                 case 2:
                                     setCheckedOut("Fallout 2");
-                                    System.out.println("Fallout 2 has been added to your checked out games!");
+                                    calendar.add(Calendar.DAY_OF_YEAR, 10);
+                                    System.out.println("Fallout 2 has been added to your checked out games! \n It will be due: " + checkOutDate.format(calendar.getTime()));
                                     break;
                                 case 3:
                                     setCheckedOut("Fallout 3");
-                                    System.out.println("Fallout 3 has been added to your checked out list");
+                                    calendar.add(Calendar.DAY_OF_YEAR, 10);
+                                    System.out.println("Fallout 3 has been added to your checked out list \n It will be due: " + checkOutDate.format(calendar.getTime()));
                                     break;
                                 case 4:
                                     setCheckedOut("Fallout New Vegas");
-                                    System.out.println("You have added Fallout New Vegas to your checked out list!");
+                                    calendar.add(Calendar.DAY_OF_YEAR, 8);
+                                    System.out.println("You have added Fallout New Vegas to your checked out list! " + checkOutDate.format(calendar.getTime()));
                                     break;
 
                             }
 
                         } else if (input.nextInt() == 2) {
                             setCheckedOut("Terraria");
-                            System.out.println("You have checked out Terraria");
+                            calendar.add(Calendar.DAY_OF_YEAR, 7);
+                            System.out.println("You have checked out Terraria \n It will be due " + checkOutDate.format(calendar.getTime()));
                             input.nextInt();
                         } else if (input.nextInt() == 3) {
-                            setCheckedOut("Minecraft");
-                            System.out.println("You have checked out Minecraft");
+                            setCheckedOut("World of Warcraft");
+                            calendar.add(Calendar.DAY_OF_YEAR, 15);
+                            System.out.println("You have checked out World of Warcraft \n It will be due: " + checkOutDate.format(calendar.getTime()));
                             input.nextInt();
                         } else if (input.nextInt() == 4) {
                             setCheckedOut("Skyrim");
-                            System.out.println("You have checked out Skyrim");
+                            calendar.add(Calendar.DAY_OF_YEAR, 12);
+                            System.out.println("You have checked out Skyrim \n It will be due " + checkOutDate.format(calendar.getTime()));
 
                         }
                         System.out.println("Press 8 to leave");
