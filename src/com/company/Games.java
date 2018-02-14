@@ -1,12 +1,23 @@
 package com.company;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 public class Games  {
 
-
+//    public void gameArrayList() {
+//
+//        List<String> gameString = new ArrayList();
+//        gameString.add(getGameSaved());
+//        gameString.add(getGameSaved2());
+//        gameString.add(getGameSaved3());
+//
+//
+//
+//    }
 
     String gameSaved;
     String gameSaved2;

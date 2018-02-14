@@ -1,17 +1,28 @@
 package com.company;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class SelectionOptions extends Games {
 
     CheckOutDates checkDates = new CheckOutDates();
+    List<String> gameString = new ArrayList();
+
+    public void gameArrayList() {
+
+
+        gameString.add(getGameSaved());
+        gameString.add(getGameSaved2());
+        gameString.add(getGameSaved3());
+
+
+    }
 
 
     public void interaction () {
         Scanner input = new Scanner(System.in);
+        SelectionOptions gameClass = new SelectionOptions();
+        gameClass.gameArrayList();
 
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat checkOutDate = new SimpleDateFormat("MM/dd/yyyy");
@@ -30,10 +41,16 @@ public class SelectionOptions extends Games {
 
             switch (input.nextInt()) {
                 case 1:
-                    // Add game outputs/inputs
+                    gameClass.gameArrayList();
+
+                    /** Adds a game and sets it so the code can respond and keep
+                     *  what the user has typed in for later responses.
+                     */
                     System.out.println("Type in a game you would like to add");
                     input.nextLine();
+//                    gameString.add(input.nextLine());
                     setGameSaved(input.nextLine());
+//                    gameString.get(0);
                     System.out.println(getGameSaved() + " Has been saved! :D");
                     System.out.println("If you would like to \n" +
                             " 1. Exit to main menu \n" +
@@ -53,16 +70,24 @@ public class SelectionOptions extends Games {
 
                     break;
                 case 2:
+
+                    /** Takes the games the user added from case 1 and allows you to remove them.
+                     *  Takes you back to method interaction.
+                     */
                     System.out.println("Which game would you like to remove? \n 1. " + getGameSaved());
                     if (input.nextInt() == 1) {
-                        System.out.println("You have removed " + getGameSaved() + "From your game library");
+                        System.out.println("You have removed " + getGameSaved() + " From your game library");
+
+                        interaction();
                         break;
                     }
 
                 case 3:
 
-
-                        System.out.println("Which game would you like to check out? \n 1. Fallout Series \n 2. Terraria \n 3. World of Warcraft \n 4. Skyrim");
+                    /** case 3, Method (Interaction) in SelectionOptions that takes input from user and allows checkout and
+                     *  gives due dates for all the games you want and sets it so I can get it back from the user.
+                     */
+                    System.out.println("Which game would you like to check out? \n 1. Fallout Series \n 2. Terraria \n 3. World of Warcraft \n 4. Skyrim");
 
                         if (input.nextInt() == 1) {
                             System.out.println("These are the list of Fallout games avaliable \n 1. Fallout \n 2. Fallout 2 \n 3. Fallout 3 \n 4. Fallout New Vegas \n 5. Fallout 4");
@@ -95,11 +120,12 @@ public class SelectionOptions extends Games {
 
                             }
 
-                        } else if (input.nextInt() == 2) {
-                            setCheckedOut("Terraria");
-                            calendar.add(Calendar.DAY_OF_YEAR, 7);
-                            System.out.println("You have checked out Terraria \n It will be due " + checkOutDate.format(calendar.getTime()));
-                            input.nextInt();
+                        } if (input.nextInt() == 2) {
+                        setCheckedOut("Terraria");
+                        calendar.add(Calendar.DAY_OF_YEAR, 7);
+                        System.out.println("You have checked out Terraria \n It will be due " + checkOutDate.format(calendar.getTime()));
+                        input.nextInt();
+
                         } else if (input.nextInt() == 3) {
                             setCheckedOut("World of Warcraft");
                             calendar.add(Calendar.DAY_OF_YEAR, 15);
@@ -118,7 +144,8 @@ public class SelectionOptions extends Games {
                         break;
 
                 case 4:
-                    // List of games you saved in case 1
+                    /** Lists games the user stated in case 1 and asks if user would
+                     *  like to go back to method (interaction) */
                     System.out.println("These are your currently added games \n" +
                             " 1. " + getGameSaved() + " \n" +
                             " 2. " + getGameSaved2());
@@ -129,6 +156,10 @@ public class SelectionOptions extends Games {
                     break;
 
                 case 5:
+                    /** Shows the user what game they have checked out and allows
+                     *  the user to press 1 and it makes the value of the checked
+                     *  Out game null (Check in), also allows them to go back to Method (interaction)
+                     */
                     System.out.println("Which one of the games would you like to check in? \n 1. " + getCheckedOut());
                     if (input.nextInt() == 1) {
                         setCheckedOut(null);
@@ -143,6 +174,9 @@ public class SelectionOptions extends Games {
 
 
                 case 6:
+                    /** Allows user to view checked out games without the check in function in
+                     *  case 5, also allows user to go back to method (Interaction)
+                     */
                     System.out.println("These are your list of checked out games \n 1. " + getCheckedOut());
                     System.out.println("Press 3 to exit");
                     if (input.nextInt() == 3) {
@@ -152,6 +186,8 @@ public class SelectionOptions extends Games {
                     break;
 
                 case 7:
+                    /** Edits/ends the program */
+
                     System.exit(0);
 
 
@@ -177,6 +213,8 @@ public class SelectionOptions extends Games {
 
         }
         }
+
+
 
 
 
