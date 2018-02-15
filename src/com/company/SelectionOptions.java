@@ -32,10 +32,11 @@ public class SelectionOptions extends Games {
         System.out.println(" 1. Add game \n" +
                 " 2. Remove game \n" +
                 " 3. Check out game \n" +
-                " 4. View library \n " +
-                "5. Check in game \n" +
+                " 4. View library \n" +
+                " 5. Check in game \n" +
                 " 6. View checked out games \n" +
-                " 7. Exit");
+                " 7. Clear game library \n" +
+                " 8. Exit");
 
         try {
 
@@ -47,6 +48,7 @@ public class SelectionOptions extends Games {
                      *  what the user has typed in for later responses.
                      */
                     System.out.println("Type in a game you would like to add");
+                    gameString.clear();
                     input.nextLine();
                     gameString.add(input.nextLine());
 //                    setGameSaved(input.nextLine());
@@ -79,21 +81,31 @@ public class SelectionOptions extends Games {
                     System.out.println("Which game would you like to remove? \n 1. " + gameString.get(0));
                     System.out.println(" 2. " + gameString.get(1));
                     input.nextLine();
-                    int userInput3 = input.nextInt();
-                    if (userInput3 == 1) {
+                    String userInput3 = input.nextLine();
+//                    String userInput3 = input.nextLine();
 
-                        gameString.remove(0);
-                        System.out.println("You have removed " + gameString.get(0) + " From your game library");
+//                        gameString.replaceAll(null);
+                        gameString.remove(userInput3);
+                        gameString.add("null");
+//                        gameString.get(0).equals(gameString.get(1));
+//                        gameString.equals("null");
+//                        gameString.isEmpty();
+
+
+//                        int placeHoldingInt = 1;
+//                        for (String l : gameString) {
+//                            System.out.println(l);
+//
+//                        }
+//                        userInput3.equals(gameString);
+//                        gameString.remove(gameString);
+                         System.out.println("You have removed " + userInput3 + " From your game library");
 
                         interaction();
                         break;
 //                    } else if (input.nextInt() == 2) {
 //                        System.out.println("You have removed " + gameString.get(1));
-                    } else if (userInput3 == 2) {
-                        gameString.remove(1);
-                        System.out.println("Game has been removed");
-                        interaction();
-                    }
+
 
                 case 3:
 
@@ -177,7 +189,7 @@ public class SelectionOptions extends Games {
                     System.out.println("These are your currently added games \n" +
                             " 1. " + gameString.get(0) + " \n" +
                             " 2. " + gameString.get(1));
-                    //Do foreach loop to iterate through what games are in the list.  
+                    //Do foreach loop to iterate through what games are in the list.
 
                     System.out.println("Press 3 if you would like to exit to the menu");
                         if (input.nextInt() == 3) {
@@ -216,10 +228,18 @@ public class SelectionOptions extends Games {
                     break;
 
                 case 7:
+
+                    gameString.clear();
+                    System.out.println("You have cleared your game library!!");
+                    interaction();
+                    break;
+
+
+                case 8:
                     /** Edits/ends the program */
 
                     System.exit(0);
-
+                    break;
 
                     }
 
@@ -240,7 +260,9 @@ public class SelectionOptions extends Games {
             /** If a person tries to access the library without a game it will
              *  catch this error and display a message letting them know they need a game to view
              */
-            System.out.println("Error, not recognized \n You have to have a game to view your library!");
+            System.out.println("Error, not recognized \n" +
+                    " There has to be at least two games in your library \n" +
+                    " to view your games!");
             interaction();
 
 
