@@ -25,6 +25,9 @@ public class Games  {
     String gameSaved4;
     String checkedOut;
 
+    /**Rather than trying to hardcode a set number of games, it'd be better to have a video game object, Game(String title, String genre), and to just
+     * add games to an arraylist of Game objects. */
+
     public String getCheckedOut() {
         return checkedOut;
     }

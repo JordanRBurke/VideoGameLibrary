@@ -51,8 +51,14 @@ public class SelectionOptions extends Games {
                     gameString.clear();
                     input.nextLine();
                     gameString.add(input.nextLine());
+
+                    /**Make sure to remove code that you're not using to avoid readability issues. */
 //                    setGameSaved(input.nextLine());
 //                    gameString.get(0);
+
+                    /**I wouldn't have the user be required to enter more than 1 game. I'd let them simply add one game and choose if they wanted to add
+                     * another, or go straight back to the menu. Just improves user experience. */
+
                     System.out.println(gameString.get(0) + " Has been saved! :D");
                     System.out.println("If you would like to \n" +
                             " 1. Exit to main menu \n" +
@@ -87,6 +93,8 @@ public class SelectionOptions extends Games {
 //                        gameString.replaceAll(null);
                         gameString.remove(userInput3);
                         gameString.add("null");
+
+                        /**Remove this. */
 //                        gameString.get(0).equals(gameString.get(1));
 //                        gameString.equals("null");
 //                        gameString.isEmpty();
@@ -116,6 +124,10 @@ public class SelectionOptions extends Games {
 
                     //Create variable to hold user input for which game they want to check out
                     //Pass this variable into the if statement
+
+                    /**I personally prefer making my case/switchs strings so as to avoid bugs. case '1', etc., that way you can have your default check to see if
+                     * something was entered other than those string cases (and symbols, numbers, etc. won't break the app), and can have the default use recursion
+                     * in case of an invalid entry.*/
                     int userInput = input.nextInt();
                         if (userInput == 1) {
                             System.out.println("These are the list of Fallout games avaliable \n 1. Fallout \n 2. Fallout 2 \n 3. Fallout 3 \n 4. Fallout New Vegas \n 5. Fallout 4");
